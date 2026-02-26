@@ -3,72 +3,89 @@
 }
 
 .featured-work {
-  padding: 60px 20px;
-  background: black;
-  color: #fff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #fff000;
+  padding: 80px 40px;
+  background-color: black;
 }
 
 .work-box {
-  background: #111;
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-   margin: 0 auto 25px auto; 
-  width: 90%; 
-  padding-bottom: 5px;
-  margin-bottom: 25px;
-}
 
-.work-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(255, 221, 0, 0.3);
+  &:hover .work-overlay {
+    opacity: 1;
+  }
+
+  &:hover .work-img {
+    transform: scale(1.05);
+  }
 }
 
 .work-img {
-  width: 70%;
-  height: auto;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   display: block;
-  border-radius: 16px;
-  margin: 0 auto; 
-  padding-top: 5px;
+  transition: transform 0.4s ease;
+}
+
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 50%, rgba(0,0,0,0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.work-tag {
+  font-family: 'Figtree', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: black;
+  background-color: #ffff00;
+  padding: 4px 10px;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 10px;
 }
 
 .work-title {
-  margin: 15px 0 10px 0;
-  font-size: 1.2rem;
-  color: #fff000;
-   font-family: "Special Gothic Expanded One", sans-serif;
- letter-spacing: 1px;
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 22px;
+  color: white;
+  margin-bottom: 8px;
 }
 
 .work-desc {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
-  padding: 0 15px;
-  color: #ffffff;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  text-align: center;
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
-.work-box.active .work-desc {
-  max-height: 200px;
-  opacity: 1;
-  margin-top: 10px;
+.work-btn {
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: black;
+  background-color: #ffff00;
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .btn-featured {
@@ -114,17 +131,21 @@
   margin: 0;
 }
 
+.work-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
 @media (min-width: 768px) { 
  .work-box {
-  background: #111;
+  background: black;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;        
-  padding-bottom: 5px;
-  margin-bottom: 25px;
 }
 
 .work-img {
@@ -162,19 +183,17 @@
 
 @media (min-width: 1024px) { 
  .work-box {
-  background: #111;
+  background: black;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;        
-  padding-bottom: 5px;
-  margin-bottom: 25px;
 }
 
 .work-img {
-  width: 80%;
+  width: 100%;
   height: auto;
   display: block;
   border-radius: 12px;
@@ -210,4 +229,18 @@
   display: block;
   text-decoration: none;
   color: inherit;
+}
+
+.featured-heading {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+.featured-subtext {
+  font-family: 'Figtree', sans-serif;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 35px;
+  font-style: italic;
 }

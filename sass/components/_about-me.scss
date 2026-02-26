@@ -191,14 +191,14 @@ body {
 }
 
 header {
-  justify-content: space-between; // change from flex-end to space-between
+  justify-content: space-between;
   align-items: center;
 }
 
 .about-section {
-  background-color: black;
+  background-color: rgb(4, 4, 4);
   padding: 80px 40px;
-  color: white;
+  color: black;
 }
 
 
@@ -238,11 +238,12 @@ header {
 }
 
 .about-card {
-  background-color: #f5f5f5;
+  background-color: white;
   border-radius: 16px;
   padding: 28px 20px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-top: 50px;
+  margin-bottom: 0px;
 
   &:hover {
     background-color: #ffff00;
@@ -266,6 +267,22 @@ header {
 .card-text {
   font-family: 'Figtree', sans-serif;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.65);
+  color: black;
   line-height: 1.6;
+}
+
+.btn-contact {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 16px;
+  color: black;
+  background-color: yellow;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 20px;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.btn-contact:hover {
+  opacity: 0.85;
 }

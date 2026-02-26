@@ -13,79 +13,207 @@
 
 <body>
 
-<header class="full-width-header">
-  <div class="grid-con">
-    <a href="http://127.0.0.1:5501/index.html" id="header-logo" class="col-start-1 col-end-2 m-col-span-3 l-col-span-3">
-      <img src="images/port-logo.png" alt="Kingsleys Logo">
-    </a>
+<div class="full-width-header">
+  <header class="grid-con">
 
-    <button class="col-start-4" id="hamburger">&#9776;</button>
+    <div id="header-logo" class="col-span-2 m-col-start-1 m-col-end-5 l-col-start-1 l-col-end-5">
+      <img src="images/port-logo.png" alt="Kingsley Watson"/>
+    </div>
 
-    <div id="menu" class="overlay m-col-start-8 m-col-end-13 l-col-start-9 l-col-end-13">
-      <button id="close">&times;</button>
-      <nav>
+    <button id="hamburger" class="col-span-2">&#9776;</button>
+
+    <div class="overlay m-col-start-5 m-col-end-10 l-col-start-5 l-col-end-10" id="overlay">
+      <button id="close">&#10005;</button>
+      <nav id="menu">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="project.html">Projects</a></li>
-          <li><a href="contact.php">Contact</a></li>
           <li><a href="about-me.html">About Me</a></li>
         </ul>
       </nav>
     </div>
-  </div>
-</header>
+
+    <div class="nav-cta m-col-span-2 l-col-start-11 l-col-end-12 ">
+      <a href="contact.html"><button class="btn-contact">Contact</button></a>
+    </div>
+
+  </header>
+</div>
+
 
 <main>
 
-  <section class="hero grid-con">
-    <div class="col-span-full m-col-start-1 m-col-end-7 l-col-start-1 l-col-end-7">
-      <img src="images/hero-img.jpg" alt="Picture of Me" id="hero-img">
-    </div>
+  <section class="hero">
+    <div class="grid-con hero-inner">
+      <div class="hero-left col-span-4 m-col-span-6 l-col-start-2 l-col-end-7">
+        
+        <h1>
+          I'm <span class="highlight">Kingsley Watson,</span><br/>
+          Motion & Graphic Designer<br/>
+          Based in Canada.
+        </h1>
+        <p>
+        Emerging Designer graduating from Fanshawe College in April 2026, inspired by editing and motion since making Fortnite montages at 13.
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">View My Work</a>
+          <a href="#" class="btn-secondary">Download CV</a>
+        </div>
+      </div>
 
-    <div class="hero-text col-span-4 m-col-start-7 m-col-end-13 l-col-start-7 l-col-end-12" id="text-col">
-      <h1>Kingsley Watson</h1>
-      <p class="p-topic">Motion and Graphic Designer</p>
-      <p class="p-desc">I'm passionate about bringing ideas to life through bold visuals, smooth motion, and clean design. Whether I'm crafting a brand, animating a sequence, or experimenting with new styles, I'm constantly pushing myself to grow and improve.
-
-Outside of design, you'll usually find me enjoying good food, watching sports, or grinding through video games — the things that keep me inspired and energized.</p>
-
-      <a href="contact.php" class="btn">Contact Me</a>
-    </div>
-  </section>
-
-  <section class="featured-work grid-con">
-    <div class="work-box col-span-4 m-col-start-2 m-col-end-7 l-col-start-2 l-col-end-7">
-      <h3 class="work-title">Seven</h3>
-      <img src="images/1280-placeholder.jpg" alt="Project 1" class="work-img">
-      <p class="work-desc">This is a detailed description of Project One. It will appear when you click the box.</p>
-    </div>
-
-    <div class="work-box col-span-4 m-col-start-7 m-col-end-12 l-col-start-7 l-col-end-12">
-      <h3 class="work-title">Kingbuds</h3>
-      <img src="images/kingbuds-placeholder.jpg" alt="Project 2" class="work-img">
-      <p class="work-desc">Description for Project Two goes here. Click to see more.</p>
-    </div>
-
-    <div class="work-box col-span-4 m-col-start-2 m-col-end-7 l-col-start-2 l-col-end-7">
-      <h3 class="work-title">Industry Night</h3>
-      <img src="images/industry-night-placeholder.jpg" alt="Project 3" class="work-img">
-      <p class="work-desc">Project Three description is hidden until clicked.</p>
-    </div>
-
-    <div class="work-box col-span-4 m-col-start-7 m-col-end-12 l-col-start-7 l-col-end-12">
-      <h3 class="work-title">Burple</h3>
-      <img src="images/burple-placeholder.jpg" alt="Project 4" class="work-img">
-      <p class="work-desc">Details about Project Four will appear on click.</p>
-    </div>
-
-    <div class="btn-projects col-span-full m-col-start-2 m-col-end-12 l-col-start-2 l-col-end-12">
-      <a href="project.html" class="btn-featured">View All Featured Projects</a>
+      <div class="hero-right col-span-4 m-col-span-6 l-col-span-6">
+        <div class="photo-wrapper">
+          <img src="images/pic-of-me-f.png" alt="Your Photo" class="profile-photo"/>
+          <div class="badge-circle">Available<br/>for Work</div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+      <span>✦ Graphic Design</span>
+      <span>✦ Branding</span>
+      <span>✦ Motion Design</span>
+      <span>✦ Marketing</span>
+    </div>
+  </div>
+
+<section class="featured-work grid-con">
+  <h2 class="featured-heading l-col-start-2 l-col-end-12">Featured Projects</h2>
+   <p class="featured-subtext l-col-start-2 l-col-end-12">Hover to see more</p>
+  <div class="work-inner l-col-start-2 l-col-end-12">
+
+    <div class="work-box">
+      <img src="images/1280-placeholder.jpg" alt="Seven" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Branding & Graphic</span>
+        <h3 class="work-title">Seven</h3>
+        <p class="work-desc">This is a detailed description of Project One. It will appear when you hover the box.</p>
+        <a href="project.html" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <img src="images/kingbuds-placeholder.jpg" alt="Kingbuds" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Web & Motion</span>
+        <h3 class="work-title">Kingbuds</h3>
+        <p class="work-desc">Description for Kingbuds goes here. A deeper look into the project.</p>
+        <a href="#" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <img src="images/industry-night-placeholder.jpg" alt="Industry Night" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Motion</span>
+        <h3 class="work-title">Industry Night</h3>
+        <p class="work-desc">Industry Night project description goes here.</p>
+        <a href="#" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <img src="images/burple-placeholder.jpg" alt="Burple" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Branding</span>
+        <h3 class="work-title">Burple</h3>
+        <p class="work-desc">Details about Burple will appear on hover.</p>
+        <a href="#" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <img src="images/burple-placeholder.jpg" alt="Project 5" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Design</span>
+        <h3 class="work-title">Project Five</h3>
+        <p class="work-desc">Details about Project Five will appear on hover.</p>
+        <a href="#" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <img src="images/burple-placeholder.jpg" alt="Project 6" class="work-img">
+      <div class="work-overlay">
+        <span class="work-tag">Design</span>
+        <h3 class="work-title">Project Six</h3>
+        <p class="work-desc">Details about Project Six will appear on hover.</p>
+        <a href="#" class="work-btn">View Project &#8599;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner grid-con">
+    <h2 class="featured-heading l-col-start-1 l-col-end-12">About Me</h2>
+    
+    <div class="about-heading-wrap col-span-4 m-col-span-12 l-col-span-12">
+      <h2 class="about-heading">
+        I'm a 19-year-old student driven by a passion to
+        <span class="about-highlight">create something meaningful</span>
+        from start to finish something I can
+        <span class="about-highlight">truly be proud of.</span>
+      </h2>
+    </div>
+
+    <div class="about-card col-span-2 m-col-span-3 l-col-span-3">
+      <div class="card-icon">🎮</div>
+      <h3 class="card-title">Gaming & Hockey</h3>
+      <p class="card-text">Gaming with friends, watching or playing hockey, and cheering on the Toronto Maple Leafs.</p>
+    </div>
+
+    <div class="about-card col-span-2 m-col-span-3 l-col-span-3">
+      <div class="card-icon">👾</div>
+      <h3 class="card-title">Anime & Pokémon</h3>
+      <p class="card-text">Gengar is my all-time favourite and Death Note is my go-to anime. Proud of my nerdy side.</p>
+    </div>
+
+    <div class="about-card col-span-2 m-col-span-3 l-col-span-3">
+      <div class="card-icon">🎵</div>
+      <h3 class="card-title">Music</h3>
+      <p class="card-text">Playlists on repeat with The Kid Laroi, Juice WRLD, and DC The Don. Music never stops.</p>
+    </div>
+
+    <div class="about-card col-span-2 m-col-span-3 l-col-span-3">
+      <div class="card-icon">🌊</div>
+      <h3 class="card-title">Nature & Travel</h3>
+      <p class="card-text">Beach days, outdoor exploring, and getting inspired by travel videos and new places worldwide.</p>
+    </div>
+
+  </div>
+</section>
+
 
   <section class="hero-video grid-con">
     <div class="video-container col-span-full m-col-start-1 m-col-end-13 l-col-start-2 l-col-end-12">
-      <video controls poster="images/keyboard-intro0083.png" id="hero-video">
+      <video controls poster="images/demo-reel-thumbail.jpg" id="hero-video">
         <source src="videos/demo-reel.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
