@@ -43,7 +43,7 @@ function showReplacementSet() {
 
   replacementItems.forEach(function(item) {
     const newBox = document.createElement("div");
-    newBox.classList.add("portfolio-box", "col-span-2", "m-col-span-4", "l-col-span-4");
+    newBox.classList.add("portfolio-box");
 
     newBox.innerHTML = `
       <img src="${item.image}" alt="">

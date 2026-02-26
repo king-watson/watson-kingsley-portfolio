@@ -1,66 +1,67 @@
 .contact-cta {
-  display: flex;
-  align-items: center;       
-  justify-content: flex-start; 
-  gap: 40px;              
-  flex-wrap: wrap;         
-  background-color: #111;
-  padding: 35px;
+  background-color: rgb(5, 5, 5);
+  margin-bottom: 50px;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 80px 0;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .contact-text {
-  flex: 1 1 400px;        
-  max-width: 600px;      
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.contact-text h2 {
-  font-size: 30px;
-  margin: 50px 0 10px 0;  
-  color: #fff000;
+.contact-pill {
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #ffff00;
+  color: black;
+  padding: 6px 14px;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.contact-heading {
   font-family: 'Special Gothic Expanded One', sans-serif;
-  letter-spacing: 1px;
+  font-size: clamp(40px, 7vw, 96px);
+  color: white;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-.contact-text p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.4em;
-  color: white;
-  font-family: "Figtree", sans-serif;
+.contact-sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: 16px;
+  color: grey;
 }
 
 .contact-circle {
-  width: 120px;
-  height: 120px;
-  background: #fff000;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  border: 2px solid #ffff00;
+  color: #ffff00;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  margin-right: 20px;
+  justify-self: end;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #ffff00;
+    color: black;
+  }
 }
-
-.contact-circle:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-}
-
-.contact-img {
-  width: 200px;            
-  height: auto;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-
-
