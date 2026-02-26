@@ -108,7 +108,7 @@ body {
   position: relative;
   width: 300px;
   height: 380px;
-  margin-left: 50px;
+  margin-left: 60px;
 }
 
 .profile-photo {
@@ -188,4 +188,84 @@ body {
 @keyframes ticker {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+header {
+  justify-content: space-between; // change from flex-end to space-between
+  align-items: center;
+}
+
+.about-section {
+  background-color: black;
+  padding: 80px 40px;
+  color: white;
+}
+
+
+.about-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-pill {
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #ffff00;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.about-heading-wrap {
+  margin-bottom: 8px;
+  margin-top: 50px;
+}
+
+.about-heading {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+
+.about-highlight {
+  color: #ffff00;
+  -webkit-text-stroke: 1px black;
+}
+
+.about-card {
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  padding: 28px 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 50px;
+
+  &:hover {
+    background-color: #ffff00;
+    transform: translateY(-4px);
+  }
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-size: 15px;
+  color: black;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.card-text {
+  font-family: 'Figtree', sans-serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.6;
 }
