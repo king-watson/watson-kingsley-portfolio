@@ -3,7 +3,7 @@
     $enviro = 'localhost';
     $uname = 'root';
     $password = '';
-    $db = 'portfolio';
+    $db = 'watson-portfolio';
 
     try {
         $pdo = new PDO("mysql:host=$enviro;dbname=$db;charset=utf8", $uname, $password);
