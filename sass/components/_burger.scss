@@ -31,10 +31,11 @@ ul, li {
 
 header {
   padding-top: 20px;
-padding-bottom: 20px;
+  padding-bottom: 20px;
   background: black;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;  
+  align-items: center;
   margin: 0;
 }
 
@@ -45,6 +46,7 @@ padding-bottom: 20px;
   color: #ffff00;
   cursor: pointer;
   margin-top: 5px;
+  margin-left: 50px;
 }
 
 .overlay {
@@ -67,8 +69,8 @@ padding-bottom: 20px;
 
 #close {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 30px;
+  right: 55px;
 }
 
 #menu ul {
@@ -91,6 +93,10 @@ padding-bottom: 20px;
   color: #ffff00;
 }
 
+.nav-cta {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
 
   .no-scroll {
@@ -98,7 +104,6 @@ padding-bottom: 20px;
     height: auto;
   }
 
- 
   #hamburger, #close {
     display: none;
   }
@@ -115,38 +120,94 @@ padding-bottom: 20px;
 
   #menu ul {
     display: flex;
-    margin-left: 70px;
+    margin-left: 20px;      // remove the left margin pushing it off
     margin-top: 10px;
+    gap: 20px;           // use gap instead of margin on each li
   }
 
   #menu ul li {
     display: inline;
-    margin: 0 20px 0 0;
+    margin: 0;
   }
 
   #menu ul li a {
-  color: #ffff00;
-  text-decoration: none;
-  transition: color 0.3s ease; 
-  font-family: 'Special Gothic Expanded One', sans-serif;
-  font-size: 20px;
+    color: #ffff00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    font-size: 16px;     // slightly smaller so it fits on tablet
+  }
+
+  #menu ul li a:hover {
+    color: white;
+  }
+
+  #header-logo img {
+    height: 75px;
+    width: auto;
+    margin-left: 0px;
+  }
+
+  .nav-cta {
+    display: block;
+    margin-right: 20px;  // push contact button away from edge
+  }
 }
 
-#menu ul li a:hover {
-  color: white;
-}
+@media screen and (min-width: 1200px) {
 
+  .no-scroll {
+    overflow: auto;
+    height: auto;
+  }
 
-  #menu a:hover {
-  color: white;
-}
+  #hamburger, #close {
+    display: none;
+  }
 
-#header-logo img {
-  height: 75px; 
-  width: auto;
-  margin-right: 0;
-  padding-left: 0;
-  margin-left: 20px;
-}
+  .overlay {
+    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    color: white;
+    overflow: hidden;
+  }
 
+  #menu ul {
+    display: flex;
+    margin-left: 60px;      // remove the left margin pushing it off
+    margin-top: 10px;
+    gap: 20px;           // use gap instead of margin on each li
+  }
+
+  #menu ul li {
+    display: inline;
+    margin: 0;
+  }
+
+  #menu ul li a {
+    color: #ffff00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Special Gothic Expanded One', sans-serif;
+    font-size: 20px;     // slightly smaller so it fits on tablet
+  }
+
+  #menu ul li a:hover {
+    color: white;
+  }
+
+  #header-logo img {
+    height: 100px;
+    width: auto;
+    margin-left: 0px;
+  }
+
+ 
+  .nav-cta {
+    display: block;
+    margin-right: 20px;  // push contact button away from edge
+  }
 }
