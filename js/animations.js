@@ -1,280 +1,205 @@
-// INDEX
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-gsap.from("#hero-img", { 
-  duration: 1.5, 
-  y: -100, 
-  opacity: 0, 
-  ease: "power2.out" 
-});
-
-gsap.from("#text-col h1", { 
-  duration: 1, 
-  x: -50, 
-  opacity: 0, 
-  delay: 0.5, 
-  ease: "power2.out" 
-});
-
-gsap.from("#text-col p, #text-col .btn", { 
-  duration: 1, 
-  x: -50, 
-  opacity: 0, 
-  delay: 0.7, 
-  stagger: 0.3, 
-  ease: "power2.out" 
-});
-
-gsap.utils.toArray(".work-box").forEach((box, index) => {
-  gsap.from(box, {
-    scrollTrigger: {
-      trigger: box,
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    x: index % 2 === 0 ? -100 : 100, 
-    opacity: 0,
-    duration: 0.3,
-    ease: "power2.out"
-  });
-});
-
-gsap.utils.toArray(".portfolio-box").forEach((box, index) => {
-  gsap.from(box, {
-    scrollTrigger: {
-      trigger: box,
-      start: "top 85%",
-      toggleActions: "play none none none"
-    },
-    x: index % 2 === 0 ? -50 : 50, 
-    opacity: 0,
-    duration: 0.3,
-    ease: "power1.out",
-    stagger: 0.2
-  });
-});
-
-gsap.from(".contact-cta .contact-text", {
-  scrollTrigger: {
-    trigger: ".contact-cta",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-gsap.from(".contact-cta .contact-action", {
-  scrollTrigger: {
-    trigger: ".contact-cta",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  delay: 0.3,
-  ease: "power2.out"
-});
-
-// BURPLE
-
-gsap.from(".seven-hero-img", {
-  duration: 1.5,
-  y: -100,
-  opacity: 0,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-overview-title", {
-  duration: 1,
-  x: -50,
-  opacity: 0,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-overview-subtitle", {
-  duration: 1,
-  x: -50,
-  opacity: 0,
-  delay: 0.3,
-  stagger: 0.2,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-overview-desc, .seven-overview-tags", {
-  duration: 1,
-  x: -50,
-  opacity: 0,
-  delay: 0.5,
-  stagger: 0.2,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-goal-text", {
-  scrollTrigger: {
-    trigger: ".seven-goal-text",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-process-text", {
-  scrollTrigger: {
-    trigger: ".seven-process-text",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-problem-text", {
-  scrollTrigger: {
-    trigger: ".seven-problem-text",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-gsap.utils.toArray(".seven-deepdive-wrapper").forEach(function(box, index) {
-  let fromX = 0;
-  if (index === 0 || index === 2) fromX = -100; 
-  else fromX = 100; 
-
-  gsap.from(box, {
-    scrollTrigger: {
-      trigger: box,
-      start: "top 85%",
-      toggleActions: "play none none none"
-    },
-    x: fromX,
-    opacity: 0,
-    duration: 0.5,
-    ease: "power2.out"
-  });
-});
-
-gsap.from(".seven-result-text", {
-  scrollTrigger: {
-    trigger: ".seven-result-text",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-gsap.from(".seven-video-element", {
-  scrollTrigger: {
-    trigger: ".seven-video-element",
-    start: "top 80%",
-    toggleActions: "play none none none"
-  },
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out"
-});
-
-// CONTACT
-
-gsap.from("#header-logo", {
-  duration: 1,
-  y: -50,
-  opacity: 0,
-  ease: "power2.out"
-});
-
-gsap.from("#hamburger", {
-  duration: 1,
-  y: -50,
-  opacity: 0,
-  delay: 0.2,
-  ease: "power2.out"
-});
-
-gsap.from(".contact-text h2", {
-  duration: 1,
-  x: -50,
-  opacity: 0,
-  ease: "power2.out"
-});
-
-gsap.from(".contact-text p", {
-  duration: 1,
-  x: -50,
-  opacity: 0,
-  delay: 0.2,
-  ease: "power2.out"
-});
-
-const contactInputs = gsap.utils.toArray(".contact-form input, .contact-form textarea, .contact-form button");
-
-function animateContactForm() {
-  contactInputs.forEach(function(input, index) {
-    gsap.from(input, {
-      scrollTrigger: {
-        trigger: input,
-        start: "top 85%",
-        toggleActions: "play none none none"
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.5,
-      delay: index * 0.1,
-      ease: "power2.out"
-    });
-  });
-}
-
-animateContactForm();
-
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
+const overlay = document.querySelector("#overlay");
+const workBoxes = gsap.utils.toArray(".work-box");
+const skillBoxes = gsap.utils.toArray(".portfolio-box");
 const footerSections = gsap.utils.toArray(".footer-about, .footer-links, .footer-social");
 
-function animateFooter() {
-  footerSections.forEach(function(section) {
-    gsap.from(section, {
-      scrollTrigger: {
-        trigger: section,
-        start: "top 85%",
-        toggleActions: "play none none none"
+
+function smoothScrollTo(e) {
+  e.preventDefault();
+
+  const targetId = e.currentTarget.getAttribute("href");
+  const targetSection = document.querySelector(targetId);
+
+  if (targetSection) {
+    overlay.classList.remove("active");
+
+    gsap.to(window, {
+      duration: 1.2,
+      scrollTo: {
+        y: targetSection,
+        offsetY: 80
       },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out"
+      ease: "power3.inOut"
     });
+  }
+}
+
+function addScrollListener(link) {
+  link.addEventListener("click", smoothScrollTo);
+}
+
+function animateWorkBox(box) {
+  gsap.from(box, {
+    scrollTrigger: {
+      trigger: box,
+      start: "top 85%",
+      toggleActions: "play none none reverse"
+    },
+    opacity: 0,
+    y: 40,
+    duration: 0.7,
+    ease: "power2.out"
   });
 }
 
-animateFooter();
-
-gsap.from(".p-contact-text", { y: 50, opacity: 0, duration: 1, ease: "power2.out" });
-
-gsap.from(".p-work-box", {
+function animateSkillBox(box, index) {
+  gsap.from(box, {
     scrollTrigger: {
-        trigger: ".p-featured-work",
-        start: "top 80%",
-        toggleActions: "play none none none"
+      trigger: box,
+      start: "top 90%",
+      toggleActions: "play none none reverse"
     },
-    y: 50,
     opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-    stagger: 0.2
+    y: 20,
+    duration: 0.5,
+    delay: index * 0.08,
+    ease: "power2.out"
+  });
+}
+
+function animateFooterSection(section) {
+  gsap.from(section, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 90%",
+      toggleActions: "play none none reverse"
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.6,
+    ease: "power2.out"
+  });
+}
+
+gsap.from("#menu ul li a", {
+  opacity: 0,
+  y: -20,
+  duration: 0.6,
+  stagger: 0.1,
+  ease: "power2.out"
 });
 
+gsap.from(".nav-cta a", {
+  opacity: 0,
+  y: -20,
+  duration: 0.6,
+  delay: 0.3,
+  ease: "power2.out"
+});
+
+gsap.from(".hero h1", {
+  opacity: 0,
+  y: 40,
+  duration: 0.8,
+  ease: "power2.out"
+});
+
+gsap.from(".hero p", {
+  opacity: 0,
+  y: 30,
+  duration: 0.7,
+  delay: 0.2,
+  ease: "power2.out"
+});
+
+gsap.from(".btn-primary, .btn-secondary", {
+  opacity: 0,
+  y: 20,
+  duration: 0.6,
+  stagger: 0.12,
+  delay: 0.3,
+  ease: "power2.out"
+});
+
+gsap.from(".profile-photo", {
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  delay: 0.2,
+  ease: "power2.out"
+});
+
+gsap.from(".badge-circle", {
+  opacity: 0,
+  scale: 0,
+  duration: 0.6,
+  delay: 0.6,
+  ease: "back.out(1.7)"
+});
+
+gsap.from(".about-heading", {
+  scrollTrigger: {
+    trigger: ".about-heading",
+    start: "top 80%",
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  ease: "power2.out"
+});
+
+gsap.from(".about-card", {
+  scrollTrigger: {
+    trigger: ".about-section",
+    start: "top 75%",
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.6,
+  stagger: 0.12,
+  ease: "power2.out"
+});
+
+gsap.from(".video-container", {
+  scrollTrigger: {
+    trigger: ".hero-video",
+    start: "top 80%",
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  ease: "power2.out"
+});
+
+gsap.from(".contact-text", {
+  scrollTrigger: {
+    trigger: ".contact-cta",
+    start: "top 80%",
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.7,
+  ease: "power2.out"
+});
+
+gsap.from(".contact-circle", {
+  scrollTrigger: {
+    trigger: ".contact-cta",
+    start: "top 80%",
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.7,
+  delay: 0.2,
+  ease: "power2.out"
+});
+
+ gsap.from("#header-logo", {
+    opacity: 0,
+    y: -20,
+    duration: 0.6,
+    ease: "power2.out"
+  });
+
+anchorLinks.forEach(addScrollListener);
+workBoxes.forEach(animateWorkBox);
+skillBoxes.forEach(animateSkillBox);
+footerSections.forEach(animateFooterSection);
