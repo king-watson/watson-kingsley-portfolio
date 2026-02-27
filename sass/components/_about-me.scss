@@ -39,8 +39,8 @@ body {
 
 .greeting-badge {
   display: inline-block;
-  border: 1px solid #FFD700;
-  color: #FFD700;
+  border: 1px solid yellow;
+  color: yellow;
   font-size: 14px;
   padding: 6px 16px;
   border-radius: 4px;
@@ -55,7 +55,7 @@ body {
   color: white;
 }
 
-.highlight { color: #FFD700; }
+.highlight { color: yellow; }
 
 .hero-left p {
   color: white;
@@ -70,7 +70,7 @@ body {
 }
 
 .btn-primary {
-  background-color: #FFD700;
+  background-color: yellow;
   color: black;
   padding: 12px 26px;
   border-radius: 25px;
@@ -80,11 +80,11 @@ body {
   transition: background 0.2s;
 }
 
-.btn-primary:hover { background-color: #e6c200; }
+.btn-primary:hover { background-color: rgb(255, 255, 150); }
 
 .btn-secondary {
-  border: 1px solid #FFD700;
-  color: #FFD700;
+  border: 1px solid yellow;
+  color: yellow;
   padding: 12px 26px;
   border-radius: 25px;
   font-weight: 600;
@@ -94,7 +94,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: #FFD700;
+  background-color: yellow;
   color: #000000;
 }
 
@@ -116,7 +116,7 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 100px;
-  border: 2px solid #FFD700;
+  border: 2px solid yellow;
   background-color: #111111;
   display: block;
 }
@@ -136,13 +136,13 @@ body {
 .tag-designer {
   bottom: 60px;
   left: -30px;
-  border-left: 3px solid #FFD700;
+  border-left: 3px solid yellow;
 }
 
 .tag-ux {
   top: 80px;
   right: -20px;
-  border-left: 3px solid #FFD700;
+  border-left: 3px solid yellow;
 }
 
 .badge-circle {
@@ -152,7 +152,7 @@ body {
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-color: #FFD700;
+  background-color: yellow;
   color: #000000;
   font-size: 0.65rem;
   font-weight: 700;
@@ -165,7 +165,7 @@ body {
 }
 
 .ticker-bar {
-  background-color: #FFD700;
+  background-color: yellow;
   overflow: hidden;
   padding: 14px 0;
   white-space: nowrap;
@@ -212,7 +212,7 @@ header {
   font-family: 'Figtree', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  background-color: #ffff00;
+  background-color: yellow;
   color: black;
   padding: 10px 20px;
   border-radius: 50px;
@@ -233,7 +233,7 @@ header {
 }
 
 .about-highlight {
-  color: #ffff00;
+  color: yellow;
   -webkit-text-stroke: 1px black;
 }
 
@@ -246,7 +246,7 @@ header {
   margin-bottom: 0px;
 
   &:hover {
-    background-color: #ffff00;
+    background-color: yellow;
     transform: translateY(-4px);
   }
 }

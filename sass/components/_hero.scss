@@ -30,7 +30,7 @@ display: block;
 }
 
 #text-col h1{
- color: #fff000;
+ color: yellow;
  padding-left: 20px;
  font-size: 29px;
  font-family: "Special Gothic Expanded One", sans-serif;
@@ -39,7 +39,7 @@ display: block;
 }
 
 .p-topic {
-color: #fff000;
+color: yellow;
 padding-left: 20px;
 padding-right: 20px;
 font-size: 18px;
@@ -73,13 +73,13 @@ font-family: "Figtree", sans-serif;
   font-size: 1rem;
   font-weight: bold;
   text-decoration: none;        
-  border: 2px solid #fff000;  
+  border: 2px solid yellow;  
   border-radius: 8px;          
   cursor: pointer;             
   transition: all 0.3s ease;   
   margin-left: 20px;
-  background: linear-gradient(90deg, #fff000, #ffae00);
-  box-shadow: 0 0 15px #fff000;
+  background: yellow;
+  box-shadow: 0 0 15px yellow;
   font-family: "Figtree", sans-serif;
 }
 
@@ -180,12 +180,12 @@ max-width: 500px;
   padding: 20px;
   border-radius: 16px;
   text-align: center;
-  border: 2px solid #fff000;
+  border: 2px solid yellow;
 }
 
 
 .box-title {
-  color: #fff000;
+  color: yellow;
   font-size: 22px;
   margin-bottom: 10px;
 }
@@ -243,18 +243,19 @@ max-width: 500px;
 #hero-video {
   width: 100%;        
   height: auto;
-  display: block;    
+  display: block;
+    
 }
 
 .section-line {
   border: 0;
   height: 2px;             
-  background: #fff000;     
+  background: yellow;     
   width: auto;              
 }
 
 .demo-reel {
-    color: #fff000;
+    color: yellow;
     background-color: black;
     padding-left: 45px;
      padding-right: 55px;
