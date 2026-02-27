@@ -6,6 +6,19 @@ const workBoxes = gsap.utils.toArray(".work-box");
 const skillBoxes = gsap.utils.toArray(".portfolio-box");
 const footerSections = gsap.utils.toArray(".footer-about, .footer-links, .footer-social");
 
+// Seven page elements
+const sevenHeroImage = document.querySelector(".seven-hero-image");
+const sevenOverviewTitle = document.querySelector(".seven-overview-title");
+const sevenOverviewSubtitles = document.querySelectorAll(".seven-overview-subtitle");
+const sevenOverviewDesc = document.querySelector(".seven-overview-desc");
+const sevenOverviewTags = document.querySelectorAll(".seven-overview-tag");
+const sevenGoalTitle = document.querySelector(".seven-goal-title");
+const sevenGoalItems = document.querySelectorAll(".seven-goal-list li");
+const sevenSectionTitles = document.querySelectorAll(".seven-process-title, .seven-problem-title, .seven-result-title");
+const sevenSectionDescs = document.querySelectorAll(".seven-process-desc, .seven-problem-desc, .seven-result-desc");
+const sevenDeepdiveImages = document.querySelectorAll(".seven-deepdive-img");
+const sevenVideoWrapper = document.querySelector(".seven-video-wrapper");
+
 
 function smoothScrollTo(e) {
   const targetId = e.currentTarget.getAttribute("href");
@@ -213,6 +226,198 @@ function animateFooterSection(section) {
   });
 }
 
+// Seven page animations
+function animateSevenHero() {
+  if (!sevenHeroImage) {
+    return;
+  }
+
+  gsap.from(sevenHeroImage, {
+    opacity: 0,
+    y: 60,
+    duration: 1.2,
+    ease: "power3.out"
+  });
+}
+
+function animateSevenOverview() {
+  if (!sevenOverviewTitle) {
+    return;
+  }
+
+  gsap.from(sevenOverviewTitle, {
+    scrollTrigger: {
+      trigger: sevenOverviewTitle,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    x: -50,
+    duration: 0.9,
+    ease: "power2.out"
+  });
+
+  gsap.from(sevenOverviewSubtitles, {
+    scrollTrigger: {
+      trigger: sevenOverviewDesc,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.7,
+    stagger: 0.15,
+    ease: "power2.out"
+  });
+
+  gsap.from(sevenOverviewDesc, {
+    scrollTrigger: {
+      trigger: sevenOverviewDesc,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+
+  // I'm staggering the tags so they feel like they pop in individually
+  gsap.from(sevenOverviewTags, {
+    scrollTrigger: {
+      trigger: sevenOverviewTags[0],
+      start: "top 90%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    scale: 0.85,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "back.out(1.5)"
+  });
+}
+
+function animateSevenGoal() {
+  if (!sevenGoalTitle) {
+    return;
+  }
+
+  gsap.from(sevenGoalTitle, {
+    scrollTrigger: {
+      trigger: sevenGoalTitle,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    x: -50,
+    duration: 0.9,
+    ease: "power2.out"
+  });
+
+  gsap.from(sevenGoalItems, {
+    scrollTrigger: {
+      trigger: sevenGoalItems[0],
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    x: -30,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out"
+  });
+}
+
+function animateSevenSections() {
+  if (!sevenSectionTitles.length) {
+    return;
+  }
+
+  // I'm reusing one loop for process, problem, and result since they share the same pattern
+  sevenSectionTitles.forEach(function animateSectionTitle(title) {
+    gsap.from(title, {
+      scrollTrigger: {
+        trigger: title,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      x: -50,
+      duration: 0.9,
+      ease: "power2.out"
+    });
+  });
+
+  sevenSectionDescs.forEach(function animateSectionDesc(desc) {
+    gsap.from(desc, {
+      scrollTrigger: {
+        trigger: desc,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+  });
+}
+
+function animateSevenDeepdive() {
+  if (!sevenDeepdiveImages.length) {
+    return;
+  }
+
+  // I'm tracking left/right alternation manually to avoid modulo
+  let slideLeft = true;
+
+  sevenDeepdiveImages.forEach(function animateDeepdiveImage(img) {
+    let xOffset;
+
+    if (slideLeft) {
+      xOffset = -50;
+    } else {
+      xOffset = 50;
+    }
+
+    if (slideLeft) {
+      slideLeft = false;
+    } else {
+      slideLeft = true;
+    }
+
+    gsap.from(img, {
+      scrollTrigger: {
+        trigger: img,
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      x: xOffset,
+      duration: 0.9,
+      ease: "power2.out"
+    });
+  });
+}
+
+function animateSevenVideo() {
+  if (!sevenVideoWrapper) {
+    return;
+  }
+
+  gsap.from(sevenVideoWrapper, {
+    scrollTrigger: {
+      trigger: sevenVideoWrapper,
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    scale: 0.95,
+    duration: 1,
+    ease: "power2.out"
+  });
+}
+
 
 // I'm calling all animations and event listeners at the bottom
 animateNav();
@@ -224,3 +429,10 @@ anchorLinks.forEach(addScrollListener);
 workBoxes.forEach(animateWorkBox);
 skillBoxes.forEach(animateSkillBox);
 footerSections.forEach(animateFooterSection);
+
+animateSevenHero();
+animateSevenOverview();
+animateSevenGoal();
+animateSevenSections();
+animateSevenDeepdive();
+animateSevenVideo();
