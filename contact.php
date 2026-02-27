@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,50 +9,60 @@ ini_set('display_errors', 1);
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="css/grid.css" rel="stylesheet">
+  <script defer type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/animations.js"></script>
 </head>
 <body>
 
-  <header class="full-width-header">
-    <div class="grid-con">
-      <a href="index.html" id="header-logo" class="col-start-1 col-end-2 m-col-span-3 l-col-span-3">
-        <img src="images/port-logo.png" alt="Kingsleys Logo">
-      </a>
+<div class="full-width-header">
+  <header class="grid-con">
 
-      <button class="col-start-4" id="hamburger">&#9776;</button>
-
-      <div id="menu" class="overlay m-col-start-8 m-col-end-13 l-col-start-9 l-col-end-13">
-        <button id="close">&times;</button>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="project.html">Projects</a></li>
-            <li><a href="contact.php">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+    <div id="header-logo" class="col-span-2 m-col-start-1 m-col-end-5 l-col-start-1 l-col-end-5">
+      <img src="images/port-logo.png" alt="Kingsley Watson"/>
     </div>
+
+    <button id="hamburger" class="col-start-4 col-end-4">&#9776;</button>
+
+    <div class="overlay m-col-start-5 m-col-end-10 l-col-start-5 l-col-end-10" id="overlay">
+      <button id="close">&#10005;</button>
+      <nav id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Projects</a></li>
+          <li><a href="index.html">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="nav-cta m-col-span-2 l-col-start-11 l-col-end-12">
+      <a href="contact.php"><button class="btn-contact">Contact</button></a>
+    </div>
+
   </header>
+</div>
+
 
 <section class="contact-page grid-con">
 
   <div class="contact-text col-span-full">
     <h2>Welcome!</h2>
     <p>I'm really excited to work with you!</p>
+
+    <?php
+      if (!empty($_GET['msg'])) {
+        $display_msg = htmlspecialchars(urldecode($_GET['msg']), ENT_QUOTES, 'UTF-8');
+        echo '<p class="form-feedback">' . $display_msg . '</p>';
+      }
+    ?>
   </div>
 
-  <?php if ($msg): ?>
-    <p class="col-span-full">
-        <?php echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); ?></p>
-
-  <form class="contact-form col-span-full" action="send.php" method="POST">
-
-    <input type="text" name="first_name" placeholder="First Name" required>
-    <input type="text" name="last_name" placeholder="Last Name" required>
-
+  <form class="contact-form col-span-full" action="php/send.php" method="POST">
+    <input type="text" name="first_name" placeholder="Name" required>
     <input type="email" name="email" placeholder="Email" required>
-
     <textarea name="message" placeholder="Enter message here" rows="10" required></textarea>
-
     <button type="submit">Send</button>
   </form>
 
@@ -79,31 +85,20 @@ ini_set('display_errors', 1);
       </ul>
     </div>
 
-    <div class="footer-social col-span-4 m-col-span-4 l-col-span-4">
+    <section class="footer-social col-span-4 m-col-span-4 l-col-span-4">
       <h4>Follow Me</h4>
       <ul class="social-icons">
-        <li><a href="#"><img src="images/insta-logo.svg" alt="Instagram"></a></li>
-        <li><a href="#"><img src="images/facebook-logo.svg" alt="Facebook"></a></li>
-        <li><a href="#"><img src="images/x-logo1.svg" alt="X"></a></li>
+        <li><a href="https://www.instagram.com/kingsley.watson" target="_blank"><img src="images/insta-logo.svg" alt="Instagram"></a></li>
+        <li><a href="https://www.facebook.com" target="_blank"><img src="images/facebook-logo.svg" alt="Facebook"></a></li>
+        <li><a href="https://www.x.com" target="_blank"><img src="images/x-logo1.svg" alt="X"></a></li>
       </ul>
-    </div>
+    </section>
   </div>
 
   <div class="footer-bottom">
     <p>&copy; 2025 Kingsley Watson. All rights reserved.</p>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 
-<!-- ScrollTrigger -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-
-<!-- Model Viewer -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-
-<!-- Your custom JS -->
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
 </body>
 </html>
-

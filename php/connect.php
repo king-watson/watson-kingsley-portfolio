@@ -2,14 +2,15 @@
 
     $enviro = 'localhost';
     $uname = 'root';
-    $password = ''; 
+    $password = '';
     $db = 'portfolio';
 
-    $connect = new mysqli($enviro, $uname, $password, $db);
-
-    if(mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
+    try {
+        $pdo = new PDO("mysql:host=$enviro;dbname=$db;charset=utf8", $uname, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Connection failed: " . $e->getMessage());
     }
 
 ?>
