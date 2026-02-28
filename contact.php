@@ -14,6 +14,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/animations.js"></script>
+  <script defer src="js/contact.js"></script>
+
 </head>
 <body>
 
@@ -59,12 +61,18 @@
     ?>
   </div>
 
-  <form class="contact-form col-span-full" action="php/send.php" method="POST">
-    <input type="text" name="first_name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="message" placeholder="Enter message here" rows="10" required></textarea>
-    <button type="submit">Send</button>
-  </form>
+  <form class="contact-form col-span-full" id="contactForm">
+  <div class="hidden">
+    <label for="company">Company</label>
+    <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="text" id="name" name="name" placeholder="Name" required>
+  <input type="email" id="email" name="email" placeholder="Email" required>
+  <textarea id="message" name="message" placeholder="Enter message here" rows="10" required></textarea>
+  <button type="submit" id="submit">Send</button>
+  <section id="feedback" class="form-feedback"></section>
+</form>
+
 
 </section>
 
