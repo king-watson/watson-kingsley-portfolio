@@ -1,0 +1,217 @@
+.admin-hud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    border-bottom: 2px solid yellow;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 9999;
+    box-shadow: 0 2px 20px rgba(255, 60, 60, 0.2);
+    box-sizing: border-box;
+}
+
+.admin-hud .admin-hud-text {
+    color: #fff;
+    font-size: 13px;
+    margin: 0;
+}
+
+.admin-hud .admin-hud-text .admin-hud-username {
+    color: yellow;
+    font-weight: bold;
+}
+
+.admin-hud-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.admin-hud-actions .admin-hud-btn {
+    background: transparent;
+    border: 1px solid yellow;
+    color: yellow;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.admin-hud-actions .admin-hud-btn:hover {
+    background: yellow;
+    color: #fff;
+}
+
+body.is-admin {
+    padding-top: 48px;
+}
+
+.admin-add-form {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
+.admin-add-form .admin-add-form-title {
+    color: #fff;
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.admin-add-form .admin-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+}
+
+.admin-add-form .admin-form-label {
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.admin-add-form .admin-form-input,
+.admin-add-form .admin-form-textarea {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.admin-add-form .admin-form-textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.admin-add-form .admin-form-input:focus,
+.admin-add-form .admin-form-textarea:focus {
+    outline: none;
+    border-color: yellow;
+}
+
+.admin-add-form .admin-form-submit {
+    margin-top: 16px;
+    background: yellow;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.admin-add-form .admin-form-submit:hover {
+    background: yellow;
+}
+
+.admin-add-form .admin-error-message {
+    color: yellow;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.admin-project-controls {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+    box-sizing: border-box;
+      position: relative;
+    z-index: 10;
+}
+
+.work-box:has(.admin-project-controls) .work-overlay {
+    pointer-events: none;
+}
+
+.admin-project-controls .admin-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.admin-project-controls .admin-form-label {
+    color: #aaa;
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+.admin-project-controls .admin-form-input,
+.admin-project-controls .admin-form-textarea {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 12px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.admin-project-controls .admin-form-textarea {
+    height: 60px;
+    resize: vertical;
+}
+
+.admin-project-controls .admin-form-input:focus,
+.admin-project-controls .admin-form-textarea:focus {
+    outline: none;
+    border-color: yellow;
+}
+
+.admin-project-controls .admin-control-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.admin-project-controls .admin-btn-update {
+    flex: 1;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    background: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+    transition: background 0.2s ease;
+}
+
+.admin-project-controls .admin-btn-update:hover {
+    background: #333;
+}
+
+.admin-project-controls .admin-btn-delete {
+    flex: 1;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    background: transparent;
+    color: yellow;
+    border: 1px solid yellow;
+    transition: all 0.2s ease;
+}
+
+.admin-project-controls .admin-btn-delete:hover {
+    background: yellow;
+    color: #fff;
+}
