@@ -1,12 +1,10 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// I'm grabbing all elements upfront
 const anchorLinks = document.querySelectorAll("a");
 const workBoxes = gsap.utils.toArray(".work-box");
 const skillBoxes = gsap.utils.toArray(".portfolio-box");
 const footerSections = gsap.utils.toArray(".footer-about, .footer-links, .footer-social");
 
-// Seven page elements
 const sevenHeroImage = document.querySelector(".seven-hero-image");
 const sevenOverviewTitle = document.querySelector(".seven-overview-title");
 const sevenOverviewSubtitles = document.querySelectorAll(".seven-overview-subtitle");
@@ -226,7 +224,6 @@ function animateFooterSection(section) {
   });
 }
 
-// Seven page animations
 function animateSevenHero() {
   if (!sevenHeroImage) {
     return;
@@ -282,7 +279,6 @@ function animateSevenOverview() {
     ease: "power2.out"
   });
 
-  // I'm staggering the tags so they feel like they pop in individually
   gsap.from(sevenOverviewTags, {
     scrollTrigger: {
       trigger: sevenOverviewTags[0],
@@ -333,7 +329,6 @@ function animateSevenSections() {
     return;
   }
 
-  // I'm reusing one loop for process, problem, and result since they share the same pattern
   sevenSectionTitles.forEach(function animateSectionTitle(title) {
     gsap.from(title, {
       scrollTrigger: {
@@ -368,7 +363,6 @@ function animateSevenDeepdive() {
     return;
   }
 
-  // I'm tracking left/right alternation manually to avoid modulo
   let slideLeft = true;
 
   sevenDeepdiveImages.forEach(function animateDeepdiveImage(img) {
@@ -418,8 +412,6 @@ function animateSevenVideo() {
   });
 }
 
-
-// I'm calling all animations and event listeners at the bottom
 animateNav();
 animateHero();
 animateAbout();

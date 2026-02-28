@@ -16,6 +16,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/animations.js"></script>
+  <script defer src="js/contact.js"></script>
 </head>
 
 <body>
@@ -120,7 +121,8 @@
         $projects = $stmt->fetchAll();
 
         foreach ($projects as $project) {
-          $tag = htmlspecialchars($project['tag'], ENT_QUOTES, 'UTF-8');
+          $tag_parts = explode('|', $project['tag']);
+          $tag = htmlspecialchars($tag_parts[0], ENT_QUOTES, 'UTF-8');
           $title = htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8');
           $desc = htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8');
           $image = htmlspecialchars($project['image'], ENT_QUOTES, 'UTF-8');
