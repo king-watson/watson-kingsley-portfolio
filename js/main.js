@@ -1,3 +1,5 @@
+(() => {
+
 const hamburger = document.querySelector("#hamburger");
 const closeButton = document.querySelector("#close");
 const menuLinks = document.querySelectorAll("#menu ul li a");
@@ -66,3 +68,5 @@ hamburger.addEventListener("click", toggleMenu);
 closeButton.addEventListener("click", toggleMenu);
 menuLinks.forEach(addCloseListener);
 loadMoreButton.addEventListener("click", handleToggleView);
+
+})();

@@ -14,9 +14,9 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/animations.js"></script>
-  <script defer src="js/contact.js"></script>
+  <script defer type="module" src="js/main.js"></script>
+  <script defer type="module" src="js/animations.js"></script>
+  <script defer type="module" src="js/contact.js"></script>
 </head>
 
 <body>
@@ -115,31 +115,31 @@
     <p class="featured-subtext col-span-full m-col-start-1 m-col-end-12 l-col-start-2 l-col-end-12">Hover to see more</p>
     <div class="work-inner col-span-full l-col-start-2 l-col-end-12">
 
-      <?php
-        $stmt = $pdo->prepare("SELECT * FROM projects WHERE is_deleted = 0 ORDER BY created_at DESC");
-        $stmt->execute();
-        $projects = $stmt->fetchAll();
+   <?php
+$stmt = $pdo->prepare("SELECT * FROM projects WHERE is_deleted = 0 ORDER BY created_at DESC");
+$stmt->execute();
+$projects = $stmt->fetchAll();
 
-        foreach ($projects as $project) {
-          $tag_parts = explode('|', $project['tag']);
-          $tag = htmlspecialchars($tag_parts[0], ENT_QUOTES, 'UTF-8');
-          $title = htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8');
-          $desc = htmlspecialchars($project['description'], ENT_QUOTES, 'UTF-8');
-          $image = htmlspecialchars($project['image'], ENT_QUOTES, 'UTF-8');
-          $link = htmlspecialchars($project['link'], ENT_QUOTES, 'UTF-8');
+foreach ($projects as $project) {
+    $tag = explode('|', $project['tag'])[0];
+    $title = $project['title'];
+    $desc = $project['description'];
+    $image = $project['image'];
+    $link = $project['link'];
 
-          echo '
-          <div class="work-box">
-            <img src="' . $image . '" alt="' . $title . '" class="work-img">
-            <div class="work-overlay">
-              <span class="work-tag">' . $tag . '</span>
-              <h3 class="work-title">' . $title . '</h3>
-              <p class="work-desc">' . $desc . '</p>
-              <a href="' . $link . '" class="work-btn">View Project &#8599;</a>
-            </div>
-          </div>';
-        }
-      ?>
+    echo '
+    <div class="work-box">
+        <img src="' . $image . '" alt="' . $title . '" class="work-img">
+        <div class="work-overlay">
+            <span class="work-tag">' . $tag . '</span>
+            <h3 class="work-title">' . $title . '</h3>
+            <p class="work-desc">' . $desc . '</p>
+            <a href="' . $link . '" class="work-btn">View Project &#8599;</a>
+        </div>
+    </div>';
+}
+?>
+      
 
     </div>
   </section>

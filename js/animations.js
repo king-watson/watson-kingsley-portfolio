@@ -1,3 +1,5 @@
+(() => {
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const anchorLinks = document.querySelectorAll("a");
@@ -428,3 +430,5 @@ animateSevenGoal();
 animateSevenSections();
 animateSevenDeepdive();
 animateSevenVideo();
+
+})();

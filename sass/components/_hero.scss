@@ -164,9 +164,14 @@ body {
 
 /* Tablet */
 @media (min-width: 768px) {
+ 
   .hero {
-    align-items: center;
-  }
+  display: grid;
+  background-color: black;
+  padding-bottom: 85px;
+  padding-top: 55px;
+  align-items: center;
+}
 
   #text-col {
     display: flex;
@@ -223,9 +228,14 @@ body {
 
 /* Desktop */
 @media (min-width: 1024px) {
+  
   .hero {
-    align-items: center;
-  }
+  display: grid;
+  background-color: black;
+  padding-bottom: 85px;
+  padding-top: 55px;
+  align-items: center;
+}
 
   #text-col {
     display: flex;
