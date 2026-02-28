@@ -1,4 +1,18 @@
-<?php require 'php/connect.php'; ?>
+<?php
+session_start();
+use Portfolio\Database;
+spl_autoload_register(function ($class) {
+    $class = str_replace('Portfolio\\', '', $class);
+    $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
+    $filepath = __DIR__ . '/includes/classes/' . $class . '.php';
+    $filepath = str_replace("/", DIRECTORY_SEPARATOR, $filepath); 
+    
+    require_once $filepath;
+});
+
+$db = new Database();
+$projects = $db->query('SELECT * FROM projects WHERE is_deleted = 0 ORDER BY created_at DESC;');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +22,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:ital,wght@0,300..900;1,300..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  <link href="css/grid.css" rel="stylesheet">
+  <link href="/watson-kingsley-portfolio/css/main.css" rel="stylesheet">
+  <link href="/watson-kingsley-portfolio/css/grid.css" rel="stylesheet">
+  <link href="/watson-kingsley-portfolio/css/admin.css" rel="stylesheet">
   <script defer type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-  <script defer type="module" src="js/main.js"></script>
-  <script defer type="module" src="js/animations.js"></script>
-  <script defer type="module" src="js/contact.js"></script>
+  <script defer type="module" src="/watson-kingsley-portfolio/js/main.js"></script>
+  <script defer type="module" src="/watson-kingsley-portfolio/js/animations.js"></script>
+  <script defer type="module" src="/watson-kingsley-portfolio/js/contact.js"></script>
 </head>
 
-<body>
+<body <?php if (isset($_SESSION['logged_in_user'])) echo 'class="is-admin"'; ?>>
+
+<?php if (isset($_SESSION['logged_in_user'])): ?>
+<div class="admin-hud">
+    <p class="admin-hud-text">Logged in as <span class="admin-hud-username"><?= $_SESSION['logged_in_user']['username'] ?></span></p>
+    <div class="admin-hud-actions">
+        <a href="/watson-kingsley-portfolio/logout.php" class="admin-hud-btn">Logout</a>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="full-width-header">
   <header class="grid-con">
@@ -42,7 +66,11 @@
     </div>
 
     <div class="nav-cta m-col-span-2 l-col-start-11 l-col-end-12">
-      <a href="contact.php"><button class="btn-contact">Contact</button></a>
+      <?php if (isset($_SESSION['logged_in_user'])): ?>
+        <a href="/watson-kingsley-portfolio/logout.php"><button class="btn-contact">Logout</button></a>
+      <?php else: ?>
+        <a href="contact.php"><button class="btn-contact">Contact</button></a>
+      <?php endif; ?>
     </div>
 
   </header>
@@ -95,51 +123,109 @@
       <span>✦ Branding</span>
       <span>✦ Motion Design</span>
       <span>✦ Marketing</span>
-      <span>✦ Graphic Design</span>
-      <span>✦ Branding</span>
-      <span>✦ Motion Design</span>
-      <span>✦ Marketing</span>
-      <span>✦ Graphic Design</span>
-      <span>✦ Branding</span>
-      <span>✦ Motion Design</span>
-      <span>✦ Marketing</span>
-      <span>✦ Graphic Design</span>
-      <span>✦ Branding</span>
-      <span>✦ Motion Design</span>
-      <span>✦ Marketing</span>
     </div>
   </div>
 
   <section class="featured-work grid-con" id="featured-work">
     <h2 class="featured-heading col-span-full m-col-start-1 m-col-end-12 l-col-start-2 l-col-end-12">Featured Projects</h2>
     <p class="featured-subtext col-span-full m-col-start-1 m-col-end-12 l-col-start-2 l-col-end-12">Hover to see more</p>
+
+    <!-- ADMIN ONLY - add new project form -->
+    <?php if (isset($_SESSION['logged_in_user'])): ?>
+    <div class="col-span-full admin-add-form">
+        <h3 class="admin-add-form-title">Add New Project</h3>
+
+        <?php if (!empty($_SESSION['error_messages'])): ?>
+            <?php foreach ($_SESSION['error_messages'] as $error): ?>
+                <p class="admin-error-message"><?= $error ?></p>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <form method="POST" action="/watson-kingsley-portfolio/includes/scripts/projects.php">
+            <input type="hidden" name="action" value="insert">
+            <div class="admin-form-group">
+                <label class="admin-form-label">Title</label>
+                <input type="text" name="title" class="admin-form-input" />
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-form-label">Description</label>
+                <textarea name="description" class="admin-form-textarea"></textarea>
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-form-label">Image URL</label>
+                <input type="text" name="image" class="admin-form-input" />
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-form-label">Project Link</label>
+                <input type="text" name="link" class="admin-form-input" />
+            </div>
+            <div class="admin-form-group">
+                <label class="admin-form-label">Tag</label>
+                <input type="text" name="tag" class="admin-form-input" />
+            </div>
+            <button type="submit" class="admin-form-submit">Add Project</button>
+        </form>
+    </div>
+    <?php endif; ?>
+
     <div class="work-inner col-span-full l-col-start-2 l-col-end-12">
 
-   <?php
-$stmt = $pdo->prepare("SELECT * FROM projects WHERE is_deleted = 0 ORDER BY created_at DESC");
-$stmt->execute();
-$projects = $stmt->fetchAll();
+      <?php foreach ($projects as $project): ?>
+        <?php $tag = explode('|', $project['tag'])[0]; ?>
+        <div class="work-box">
+            <img src="<?= $project['image'] ?>" alt="<?= $project['title'] ?>" class="work-img">
+            <div class="work-overlay">
+                <span class="work-tag"><?= $tag ?></span>
+                <h3 class="work-title"><?= $project['title'] ?></h3>
+                <p class="work-desc"><?= $project['description'] ?></p>
+                <a href="<?= $project['link'] ?>" class="work-btn">View Project &#8599;</a>
+            </div>
 
-foreach ($projects as $project) {
-    $tag = explode('|', $project['tag'])[0];
-    $title = $project['title'];
-    $desc = $project['description'];
-    $image = $project['image'];
-    $link = $project['link'];
+            <!-- ADMIN ONLY - outside overlay so always clickable -->
+            <?php if (isset($_SESSION['logged_in_user'])): ?>
+            <div class="admin-project-controls">
 
-    echo '
-    <div class="work-box">
-        <img src="' . $image . '" alt="' . $title . '" class="work-img">
-        <div class="work-overlay">
-            <span class="work-tag">' . $tag . '</span>
-            <h3 class="work-title">' . $title . '</h3>
-            <p class="work-desc">' . $desc . '</p>
-            <a href="' . $link . '" class="work-btn">View Project &#8599;</a>
+                <form method="POST" action="/watson-kingsley-portfolio/includes/scripts/projects.php">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="id" value="<?= $project['id'] ?>">
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Title</label>
+                        <input type="text" name="title" value="<?= $project['title'] ?>" class="admin-form-input" />
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Description</label>
+                        <textarea name="description" class="admin-form-textarea"><?= $project['description'] ?></textarea>
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Image URL</label>
+                        <input type="text" name="image" value="<?= $project['image'] ?>" class="admin-form-input" />
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Project Link</label>
+                        <input type="text" name="link" value="<?= $project['link'] ?>" class="admin-form-input" />
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Tag</label>
+                        <input type="text" name="tag" value="<?= $project['tag'] ?>" class="admin-form-input" />
+                    </div>
+                    <div class="admin-control-buttons">
+                        <button type="submit" class="admin-btn-update">Update Project</button>
+                    </div>
+                </form>
+
+                <form method="POST" action="/watson-kingsley-portfolio/includes/scripts/projects.php">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="<?= $project['id'] ?>">
+                    <div class="admin-control-buttons">
+                        <button type="submit" class="admin-btn-delete">Delete Project</button>
+                    </div>
+                </form>
+
+            </div>
+            <?php endif; ?>
+
         </div>
-    </div>';
-}
-?>
-      
+      <?php endforeach; ?>
 
     </div>
   </section>
@@ -198,37 +284,30 @@ foreach ($projects as $project) {
       <h2 class="featured-heading col-span-full m-col-span-full l-col-start-1 l-col-end-12">Software Skills</h2>
 
       <div id="portfolio-container" class="skills-grid">
-
         <div class="portfolio-box">
           <img src="images/photoshop-logo.svg" alt="Photoshop">
           <h3>Photoshop</h3>
         </div>
-
         <div class="portfolio-box">
           <img src="images/after-effects-logo.svg" alt="After Effects">
           <h3>After Effects</h3>
         </div>
-
         <div class="portfolio-box">
           <img src="images/premiere-logo.svg" alt="Premiere">
           <h3>Premiere</h3>
         </div>
-
         <div class="portfolio-box">
           <img src="images/illustrator-logo.svg" alt="Illustrator">
           <h3>Illustrator</h3>
         </div>
-
         <div class="portfolio-box">
           <img src="images/cinema-logo.svg" alt="Cinema 4D">
           <h3>Cinema 4D</h3>
         </div>
-
         <div class="portfolio-box">
           <img src="images/figma-logo.svg" alt="Figma">
           <h3>Figma</h3>
         </div>
-
       </div>
 
       <div class="load-more-wrapper">
@@ -285,3 +364,6 @@ foreach ($projects as $project) {
 
 </body>
 </html>
+<?php
+$_SESSION['error_messages'] = [];
+?>
