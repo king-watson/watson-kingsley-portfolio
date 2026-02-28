@@ -1,34 +1,33 @@
 <?php
 require 'php/connect.php';
 
-$id = $_GET['id'];
-
+$id = (int)$_GET['id'];
 $stmt = $pdo->prepare('SELECT * FROM projects WHERE id = :id AND is_deleted = 0');
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 $project = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$project) {
-  header('Location: index.php');
-  exit;
+    header('Location: index.php');
+    exit;
 }
 
-$title        = htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8');
-$overview     = htmlspecialchars($project['overview'] ?? '', ENT_QUOTES, 'UTF-8');
-$process      = htmlspecialchars($project['process'] ?? '', ENT_QUOTES, 'UTF-8');
-$problem      = htmlspecialchars($project['problem'] ?? '', ENT_QUOTES, 'UTF-8');
-$result       = htmlspecialchars($project['result'] ?? '', ENT_QUOTES, 'UTF-8');
-$banner_image = htmlspecialchars($project['banner_image'] ?? '', ENT_QUOTES, 'UTF-8');
-$video_src    = htmlspecialchars($project['video_src'] ?? '', ENT_QUOTES, 'UTF-8');
+$title        = $project['title'];
+$overview     = $project['overview'] ?? '';
+$process      = $project['process'] ?? '';
+$problem      = $project['problem'] ?? '';
+$result       = $project['result'] ?? '';
+$banner_image = $project['banner_image'] ?? '';
+$video_src    = $project['video_src'] ?? '';
 
-$tag_items   = !empty($project['tag']) ? explode('|', $project['tag']) : [];
-$goal_items  = !empty($project['goal']) ? explode('|', $project['goal']) : [];
-$team_items  = !empty($project['team_members']) ? explode('|', $project['team_members']) : [];
-$deep_dives  = array_filter([
-  $project['deep_dive_1'] ?? '',
-  $project['deep_dive_2'] ?? '',
-  $project['deep_dive_3'] ?? '',
-  $project['deep_dive_4'] ?? '',
+$tag_items  = !empty($project['tag']) ? explode('|', $project['tag']) : [];
+$goal_items = !empty($project['goal']) ? explode('|', $project['goal']) : [];
+$team_items = !empty($project['team_members']) ? explode('|', $project['team_members']) : [];
+$deep_dives = array_filter([
+    $project['deep_dive_1'] ?? '',
+    $project['deep_dive_2'] ?? '',
+    $project['deep_dive_3'] ?? '',
+    $project['deep_dive_4'] ?? '',
 ]);
 ?>
 <!DOCTYPE html>
@@ -46,9 +45,9 @@ $deep_dives  = array_filter([
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/animations.js"></script>
-  <script defer src="js/contact.js"></script>
+  <script defer type="module" src="js/main.js"></script>
+  <script defer type="module" src="js/animations.js"></script>
+  <script defer type="module" src="js/contact.js"></script>
 </head>
 <body>
 
@@ -94,7 +93,7 @@ $deep_dives  = array_filter([
       <h2 class="seven-overview-subtitle">Type</h2>
       <ul class="seven-overview-tags">
         <?php foreach ($tag_items as $t): ?>
-          <li class="seven-overview-tag"><?php echo htmlspecialchars($t, ENT_QUOTES, 'UTF-8'); ?></li>
+          <li class="seven-overview-tag"><?php echo $t; ?></li>
         <?php endforeach; ?>
       </ul>
 
@@ -102,7 +101,7 @@ $deep_dives  = array_filter([
       <h2 class="seven-overview-subtitle">Team Members</h2>
       <ul class="seven-overview-tags">
         <?php foreach ($team_items as $member): ?>
-          <li class="seven-overview-tag"><?php echo htmlspecialchars($member, ENT_QUOTES, 'UTF-8'); ?></li>
+          <li class="seven-overview-tag"><?php echo $member; ?></li>
         <?php endforeach; ?>
       </ul>
       <?php endif; ?>
@@ -116,7 +115,7 @@ $deep_dives  = array_filter([
       <h2 class="seven-goal-title">GOAL</h2>
       <ol class="seven-goal-list">
         <?php foreach ($goal_items as $goal): ?>
-          <li><?php echo htmlspecialchars($goal, ENT_QUOTES, 'UTF-8'); ?></li>
+          <li><?php echo $goal; ?></li>
         <?php endforeach; ?>
       </ol>
     </article>
@@ -155,11 +154,10 @@ $deep_dives  = array_filter([
     ];
     $i = 0;
     foreach ($deep_dives as $img):
-      $safe_img = htmlspecialchars($img, ENT_QUOTES, 'UTF-8');
       $pos = $positions[$i % 4];
     ?>
       <figure class="seven-deepdive-wrapper <?php echo $pos; ?>">
-        <img src="<?php echo $safe_img; ?>" alt="<?php echo $title; ?> process image" class="seven-deepdive-img">
+        <img src="<?php echo $img; ?>" alt="<?php echo $title; ?> process image" class="seven-deepdive-img">
       </figure>
     <?php $i++; endforeach; ?>
   </section>
@@ -179,10 +177,10 @@ $deep_dives  = array_filter([
   <?php if (!empty($video_src)): ?>
   <section class="seven-video grid-con">
     <div class="seven-video-wrapper col-span-4 m-col-start-1 m-col-end-13 l-col-start-2 l-col-end-12">
-    <video controls class="seven-video-element">
-    <source src="<?php echo $video_src; ?>" type="<?php echo str_ends_with($video_src, '.webm') ? 'video/webm' : 'video/mp4'; ?>">
-    Your browser does not support the video tag.
-    </video>
+      <video controls class="seven-video-element">
+        <source src="<?php echo $video_src; ?>" type="<?php echo str_ends_with($video_src, '.webm') ? 'video/webm' : 'video/mp4'; ?>">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </section>
   <?php endif; ?>

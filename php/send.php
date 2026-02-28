@@ -41,8 +41,7 @@
             echo '<p>Please fix: ' . htmlspecialchars(implode(', ', $fail), ENT_QUOTES, 'UTF-8') . '</p>';
             exit;
         }
-
-        // I'm using a prepared statement to safely insert the submission into the database
+        
         $stmt = $connect->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $first, $visitor_email, $message);
         $stmt->execute();
