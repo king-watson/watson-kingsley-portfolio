@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json');
 
-$host = 'localhost';
-$dbname = 'watson-portfolio';  
+$host     = 'localhost';
+$dbname   = 'watson-portfolio';  
 $username = 'root';    
 $password = '';     
 $table_name = 'contacts'; 
@@ -21,8 +21,8 @@ if (!empty($_POST['company'])) {
     $errors[] = 'Spam detected.';
 }
 
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
+$name    = trim($_POST['name'] ?? '');
+$email   = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
 if (empty($name)) {
@@ -57,7 +57,18 @@ if (!empty($errors)) {
 try {
     $stmt = $pdo->prepare("INSERT INTO $table_name (name, email, message) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $message]);
-    echo json_encode(['message' => 'Thank you! Your message has been sent successfully.']);
+
+    $to      = 'watsonkingsley38@gmail.com';
+    $subject = 'New Portfolio Message from ' . $name;
+    $message = "Name: $name\nEmail: $email\nMessage:\n$message";
+    $headers = 'From: no-reply@yourdomain.com';
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo json_encode(['message' => 'Thank you! Your message has been sent successfully.']);
+    } else {
+        echo json_encode(['errors' => ['Email could not be sent.']]);
+    }
+
 } catch(PDOException $e) {
     echo json_encode(['errors' => ['Database error occurred.']]);
 }
