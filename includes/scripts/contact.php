@@ -61,7 +61,7 @@ try {
     $to      = 'watsonkingsley38@gmail.com';
     $subject = 'New Portfolio Message from ' . $name;
     $message = "Name: $name\nEmail: $email\nMessage:\n$message";
-    $headers = 'From: no-reply@yourdomain.com';
+    $headers = 'From: no-reply@kingsley-watson.ca';
 
     if (mail($to, $subject, $message, $headers)) {
         echo json_encode(['message' => 'Thank you! Your message has been sent successfully.']);
